@@ -1,0 +1,9 @@
+export default function getListStudentIds(arr) {
+    if (Array.isArray(arr)){
+	const arrid = data.map((item)=> item.id);
+	return arrId;
+    } else {
+	return [];
+    }  
+
+}
