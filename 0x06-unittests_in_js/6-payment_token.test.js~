@@ -1,0 +1,25 @@
+const getPaymentTokenFromAPI = require('./6-payment_token');
+const sinon = require('sinon');
+const assert = require('assert');
+
+describe('Testing getPaymentTokenFromAPI', () => {
+    it('should test an async function', (done)=> {
+	const success = true;
+
+	return getPaymentTokenFromAPI(success).then((response) => {
+	    assert.deepStrictEqual(response, {data: 'Successful response from the API' })
+	    done();
+	});
+    });
+
+	it('should reject with an error when success is false', (done) => {
+	    const success = false;
+	    const response = getPaymentTokenFromAPI(success);
+
+	    assert.strictEqual(response, undefined);
+	    done();
+	});
+
+
+
+    });
