@@ -33,8 +33,8 @@ function countStudents(filePath) {
       }
 
       console.log('Number of students:', students);
-      console.log(`Number of students in CS ${csStudents}. List: ${csList.join(', ')}`);
-      console.log(`Number of students in SWE ${sweStudents}. List: ${sweList.join(', ')}`);
+      console.log(`Number of students in CS: ${csStudents}. List: ${csList.join(', ')}`);
+      console.log(`Number of students in SWE: ${sweStudents}. List: ${sweList.join(', ')}`);
 
       resolve();
     });
