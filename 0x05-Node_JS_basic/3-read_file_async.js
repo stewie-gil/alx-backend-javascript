@@ -1,5 +1,44 @@
 const fs = require('fs');
 
-function countStudents(path){
+function countStudents(filePath) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (error, data) => {
+      if (error) {
+        const customError = new Error('Cannot load the database');
+        reject(customError);
+        return;
+      }
+      let students = 0;
 
+      let csStudents = 0;
+      let sweStudents = 0;
+      const csList = [];
+      const sweList = [];
+
+      const lines = data.split('\n');
+      const nonEmptyLines = lines.filter((line) => line.trim() !== '');
+
+      students = nonEmptyLines.length - 1;
+
+      for (const line of lines) {
+        const words = line.split(',');
+
+        if (words[3].trim() === 'CS') {
+          csList.push(words[0]);
+          csStudents += 1;
+        } else if (words[3].trim() === 'SWE') {
+          sweList.push(words[0]);
+          sweStudents += 1;
+        }
+      }
+
+      console.log('Number of students:', students);
+      console.log(`Number of students in CS ${csStudents}. List: ${csList.join(', ')}`);
+      console.log(`Number of students in SWE ${sweStudents}. List: ${sweList.join(', ')}`);
+
+      resolve();
+    });
+  });
 }
+
+module.exports = countStudents;
