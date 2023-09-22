@@ -8,17 +8,18 @@ function countStudents(filePath) {
         reject(customError);
         return;
       }
-      let students = 0;
+      // let students = 0;
 
       let csStudents = 0;
       let sweStudents = 0;
       const csList = [];
       const sweList = [];
 
+      let students1 = 0;
       const lines = data.split('\n');
-      const nonEmptyLines = lines.filter((line) => line.trim() !== '');
+      // const nonEmptyLines = lines.filter((line) => line.trim() !== '');
 
-      students = nonEmptyLines.length - 1;
+      // students = nonEmptyLines.length - 1;
 
       for (const line of lines) {
         const words = line.split(',');
@@ -26,13 +27,15 @@ function countStudents(filePath) {
         if (words[3].trim() === 'CS') {
           csList.push(words[0]);
           csStudents += 1;
+          students1 += 1;
         } else if (words[3].trim() === 'SWE') {
           sweList.push(words[0]);
           sweStudents += 1;
+          students1 += 1;
         }
       }
 
-      console.log('Number of students:', students);
+      console.log('Number of students:', students1);
       console.log(`Number of students in CS: ${csStudents}. List: ${csList.join(', ')}`);
       console.log(`Number of students in SWE: ${sweStudents}. List: ${sweList.join(', ')}`);
 
