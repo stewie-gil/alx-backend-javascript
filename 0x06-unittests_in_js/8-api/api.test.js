@@ -1,30 +1,21 @@
-#!/usr/bin/env node
+const request = require('request');
+const {expect} = require('chai');
 
-const assert = require('assert');
-const sinon = require('sinon');
-const app = require('./api');
+describe('Testing api', () => {
+const url = 'http://localhost:7865';
 
-const request = supertest(app);
+it('should return correct response for root', (done) => {
+    request.get(`${url}`, (error, res, body) => {
+expect(body).to.be.equal('Welcome to the payment system');
+done();
 
-
-describe('testing express app', ()=>{
-    it('should return correct status code',(done)=> {
-	request
-	    .get('/')
-	    .expect(200)
-	    .end((err, res) => {
-		if(err) return done(err);
-		assert.strictEqual(res.text, 'Welcome to the payment system');
-		done();
-	    });
-    });
-
-    it('should respond with a 404 satus for unkown route',(done) => {
-	request
-	    .get('/unknown-route')
-	    .expect(404, done);
-    });
-
-
+});
+});
+it('should return the right status code', (done) => {
+	request.get(`${url}`, (error, res, body) => {
+	    expect(res.statusCode).to.be.equal(200);
+	    done();
+	});
+});
 
 });
