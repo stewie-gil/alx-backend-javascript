@@ -51,7 +51,7 @@ const app = http.createServer((req, res) => {
 
           const responseText = `Number of students: ${students1}\n`
     + `Number of students in CS ${csStudents}. List: ${csList.join(', ')}\n`
-    + `Number of students in SWE ${sweStudents}. List ${sweList.join(', ')}`;
+    + `Number of students in SWE ${sweStudents}. List: ${sweList.join(', ')}`;
 
           resolve(responseText);
         });
